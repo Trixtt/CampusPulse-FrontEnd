@@ -38,116 +38,116 @@ export default function HomePage() {
 
     fetchPosts();
 
-  }, [category, 
-      status, 
-      location, 
-      search]);
+  }, [category,
+    status,
+    location,
+    search]);
 
   return (
-    <div className="max-w-5xl mx-auto space-y-6">
+    <div className="max-w-3xl mx-auto space-y-6">
 
       <CreatePost />
 
       <div className="grid grid-cols-4 gap-4">
-      <input
-        type="text"
-        placeholder="Cari laporan..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        className="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-4 text-white"
-      />
+        <input
+          type="text"
+          placeholder="Cari laporan..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-4 text-white"
+        />
 
-      <select
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-        className="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-4 text-white"
-      >
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          className="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-4 text-white"
+        >
 
-        <option value="">
-          Semua Laporan
-        </option>
+          <option value="">
+            Semua Laporan
+          </option>
 
-        <option value="Fasilitas">
-          Fasilitas
-        </option>
+          <option value="Fasilitas">
+            Fasilitas
+          </option>
 
-        <option value="Keamanan">
-          Keamanan
-        </option>
+          <option value="Keamanan">
+            Keamanan
+          </option>
 
-        <option value="Kebersihan">
-          Kebersihan
-        </option>
+          <option value="Kebersihan">
+            Kebersihan
+          </option>
 
-        <option value="Akademik">
-          Akademik
-        </option>
+          <option value="Akademik">
+            Akademik
+          </option>
 
-        <option value="Parkir">
-          Parkir
-        </option>
+          <option value="Parkir">
+            Parkir
+          </option>
 
-      </select>
+        </select>
 
-      <select
-        value={status}
-        onChange={(e) => setStatus(e.target.value)}
-        className="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-4 text-white"
-      >
+        <select
+          value={status}
+          onChange={(e) => setStatus(e.target.value)}
+          className="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-4 text-white"
+        >
 
-        <option value="">
-          Semua Status
-        </option>
+          <option value="">
+            Semua Status
+          </option>
 
-        <option value="Pending">
-          Pending
-        </option>
+          <option value="Pending">
+            Pending
+          </option>
 
-        <option value="Diproses">
-          Diproses
-        </option>
+          <option value="Diproses">
+            Diproses
+          </option>
 
-        <option value="Selesai">
-          Selesai
-        </option>
+          <option value="Selesai">
+            Selesai
+          </option>
 
-      </select>
+        </select>
 
-      <select
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
-        className="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-4 text-white"
-      >
+        <select
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          className="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-4 text-white"
+        >
 
-        <option value="">
-          Semua Lokasi
-        </option>
+          <option value="">
+            Semua Lokasi
+          </option>
 
-        <option value="Gedung A">
-          Gedung A
-        </option>
+          <option value="Gedung A">
+            Gedung A
+          </option>
 
-        <option value="Gedung B">
-          Gedung B
-        </option>
+          <option value="Gedung B">
+            Gedung B
+          </option>
 
-        <option value="Perpustakaan">
-          Perpustakaan
-        </option>
+          <option value="Perpustakaan">
+            Perpustakaan
+          </option>
 
-        <option value="Parkiran Timur">
-          Parkiran Timur
-        </option>
+          <option value="Parkiran Timur">
+            Parkiran Timur
+          </option>
 
-        <option value="Lab Komputer">
-          Lab Komputer
-        </option>
+          <option value="Lab Komputer">
+            Lab Komputer
+          </option>
 
-        <option value="Kantin">
-          Kantin
-        </option>
+          <option value="Kantin">
+            Kantin
+          </option>
 
-      </select>
+        </select>
 
       </div>
 
@@ -157,6 +157,7 @@ export default function HomePage() {
           key={post.id}
           postId={post.id}
           name={post.user.name}
+          avatar={post.user.avatar}
           category={post.category}
           content={post.content}
           image={post.image}

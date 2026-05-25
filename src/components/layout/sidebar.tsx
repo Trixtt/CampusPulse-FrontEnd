@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-
+import api from "@/services/api";
 import {
   Home,
   Bell,
@@ -18,7 +18,32 @@ import {
 
 export default function Sidebar() {
 
+  const [unreadCount, setUnreadCount] = useState(0);
+
   const [user, setUser] = useState<any>(null);
+
+  const fetchUnread = async () => {
+
+      try {
+
+        const user = JSON.parse(
+          localStorage.getItem("user") || "{}"
+        );
+
+        const response = await api.get(
+          `/chat/unread/${user.id}`
+        );
+
+        setUnreadCount(
+          response.data.count
+        );
+
+      } catch (error) {
+
+        console.log(error);
+
+      }
+    };
 
   useEffect(() => {
 
@@ -27,6 +52,8 @@ export default function Sidebar() {
     if (data) {
       setUser(JSON.parse(data));
     }
+
+    fetchUnread();
 
   }, []);
 
@@ -91,20 +118,56 @@ export default function Sidebar() {
 
         <Link
           href="/chat"
-          className={`
-          flex items-center gap-4
-          px-4 py-3
-          rounded-2xl
-          transition-all
-          duration-300
-          ${pathname === "/chat"
-              ? "bg-white text-black shadow-lg"
-              : "text-zinc-400 hover:bg-zinc-900 hover:text-white"
-            }
-        `}
+          className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-zinc-900 text-zinc-300 hover:text-white transition"
         >
-          <MessageCircle size={20} />
-          Chat
+
+          <div className="flex items-center gap-3">
+
+            <div className="relative">
+
+              <MessageCircle size={20} />
+
+              {
+                unreadCount > 0 && (
+
+                  <div
+                    className="
+
+                    absolute
+
+                    -top-2 -right-2
+
+                    min-w-[20px]
+                    h-5
+
+                    px-1
+
+                    rounded-full
+
+                    bg-red-500
+
+                    text-white
+
+                    text-xs
+
+                    flex items-center justify-center
+
+                  "
+                  >
+
+                    {unreadCount}
+
+                  </div>
+
+                )
+              }
+
+            </div>
+
+            Chat
+
+          </div>
+
         </Link>
 
         <Link

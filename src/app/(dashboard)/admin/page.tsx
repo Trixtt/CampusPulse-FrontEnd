@@ -18,14 +18,7 @@ import {
 import { useEffect, useState } from "react";
 import api from "@/services/api";
 import { useRouter } from "next/navigation";
-import dynamic from "next/dynamic";
-
-const ReportMap = dynamic(
-  () => import("@/components/admin/report-map"),
-  {
-    ssr: false,
-  }
-);
+import ReportMap from "@/components/admin/report-map";
 
 ChartJS.register(
   ArcElement,

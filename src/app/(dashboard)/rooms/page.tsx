@@ -37,7 +37,7 @@ export default function GlobalRoomPage() {
 
   return (
 
-    <div className="w-full space-y-6">
+    <div className="max-w-3xl mx-auto space-y-6">
 
       {/* HEADER */}
 
@@ -66,6 +66,7 @@ export default function GlobalRoomPage() {
             key={post.id}
             postId={post.id}
             name={post.user.name}
+            avatar={post.user.avatar}
             category={post.category}
             content={post.content}
             image={post.image}

@@ -54,7 +54,49 @@ export default function ChatInboxPage() {
 
             <div className="flex items-center gap-4">
 
-              <div className="w-14 h-14 rounded-full bg-zinc-700" />
+              {
+              user.avatar ? (
+
+                <img
+                  src={`http://127.0.0.1:8000/storage/${user.avatar}`}
+                  alt="avatar"
+                  className="
+
+                  w-14 h-14
+
+                  rounded-full
+
+                  object-cover
+
+                "
+                />
+
+              ) : (
+
+                <div
+                  className="
+
+                  w-14 h-14
+
+                  rounded-full
+
+                  bg-zinc-700
+
+                  flex items-center justify-center
+
+                  text-white
+
+                  font-bold
+
+                "
+                >
+
+                  {user.name?.charAt(0)}
+
+                </div>
+
+              )
+            }
 
               <div>
 

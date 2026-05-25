@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 
 interface Props {
+  avatar?: string;
   name: string;
   category: string;
   content: string;
@@ -21,6 +22,7 @@ interface Props {
 }
 
 export default function ReportCard({
+  avatar,
   name,
   category,
   content,
@@ -105,7 +107,49 @@ export default function ReportCard({
 
         <div className="flex items-center gap-4">
 
-          <div className="w-14 h-14 rounded-full bg-zinc-700" />
+          {
+          avatar ? (
+
+            <img
+              src={`http://127.0.0.1:8000/storage/${avatar}`}
+              alt="avatar"
+              className="
+
+              w-14 h-14
+
+              rounded-full
+
+              object-cover
+
+            "
+            />
+
+          ) : (
+
+            <div
+              className="
+
+              w-14 h-14
+
+              rounded-full
+
+              bg-zinc-700
+
+              flex items-center justify-center
+
+              text-white
+
+              font-bold
+
+            "
+            >
+
+              {name?.charAt(0)}
+
+            </div>
+
+          )
+        }
 
           <div>
 
