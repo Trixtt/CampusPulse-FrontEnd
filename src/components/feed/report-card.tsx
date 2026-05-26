@@ -1,6 +1,7 @@
 "use client";
 
 import api from "@/services/api";
+import Image from "next/image";
 import { useState } from "react";
 import {
   MessageCircle,
@@ -108,12 +109,12 @@ export default function ReportCard({
         <div className="flex items-center gap-4">
 
           {
-          avatar ? (
+            avatar ? (
 
-            <img
-              src={`http://127.0.0.1:8000/storage/${avatar}`}
-              alt="avatar"
-              className="
+              <img
+                src={`${process.env.NEXT_PUBLIC_API_URL?.replace("/api", "")}/storage/${avatar}`}
+                alt="avatar"
+                className="
 
               w-14 h-14
 
@@ -122,12 +123,12 @@ export default function ReportCard({
               object-cover
 
             "
-            />
+              />
 
-          ) : (
+            ) : (
 
-            <div
-              className="
+              <div
+                className="
 
               w-14 h-14
 
@@ -142,14 +143,14 @@ export default function ReportCard({
               font-bold
 
             "
-            >
+              >
 
-              {name?.charAt(0)}
+                {name?.charAt(0)}
 
-            </div>
+              </div>
 
-          )
-        }
+            )
+          }
 
           <div>
 
@@ -193,10 +194,12 @@ export default function ReportCard({
 
         {
           image && (
-            <img
-              src={`http://127.0.0.1:8000/storage/${image}`}
-              alt="report"
-              className="w-full rounded-2xl mt-5"
+            <Image
+              src={`${process.env.NEXT_PUBLIC_API_URL?.replace("/api", "")}/storage/${image}`}
+              alt=""
+              width={500}
+              height={500}
+              className="w-full rounded-2xl"
             />
           )
         }
